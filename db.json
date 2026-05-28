@@ -1,0 +1,46 @@
+{
+  "barber": [
+    {
+      "bName": "sardor",
+      "experience": "5",
+      "age": "23",
+      "rating": "6",
+      "img": "https://thumbs.dreamstime.com/b/portrait-cheerful-smiling-young-man-folded-arms-joyful-handsome-men-crossed-hands-studio-shot-isolated-gray-195089624.jpg",
+      "id": "wVBrzRbFlYE"
+    },
+    {
+      "bName": "qosim",
+      "experience": "4",
+      "age": "33",
+      "rating": "5",
+      "img": "https://static.vecteezy.com/system/resources/thumbnails/026/136/046/small/business-man-illustration-ai-generative-png.png",
+      "id": "0BAonjE-dLs"
+    }
+  ],
+  "recepts": [
+    {
+      "name": "vor",
+      "phone": "1244422",
+      "time": "4",
+      "barberId": "0BAonjE-dLs",
+      "id": "Npr4DByz4BA"
+    }
+  ],
+  "acceptedCustomers": [
+    {
+      "name": "abbos",
+      "phone": "2992071",
+      "time": "9",
+      "barberId": "wVBrzRbFlYE",
+      "id": "ByuzMaYULIs"
+    },
+    {
+      "name": "islom",
+      "phone": "2992011",
+      "time": "2",
+      "barberId": "wVBrzRbFlYE",
+      "id": "UEfu3KA0Jxc"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
