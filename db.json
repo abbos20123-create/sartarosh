@@ -15,6 +15,14 @@
       "rating": "5",
       "img": "https://static.vecteezy.com/system/resources/thumbnails/026/136/046/small/business-man-illustration-ai-generative-png.png",
       "id": "0BAonjE-dLs"
+    },
+    {
+      "bName": "afsg",
+      "rating": 4,
+      "age": 2,
+      "experience": 4,
+      "img": "https://st5.depositphotos.com/2760050/74592/i/450/depositphotos_745925384-stock-photo-businessman-portrait-outdoor-smiling-mature.jpg",
+      "id": "jvnwwb0K5MA"
     }
   ],
   "recepts": [
@@ -33,6 +41,22 @@
       "barberId": "0BAonjE-dLs",
       "userEmail": "abaxri@gmail.com",
       "id": "jPdW0flsLMc"
+    },
+    {
+      "name": "adf",
+      "phone": "24",
+      "time": "22",
+      "barberId": "0BAonjE-dLs",
+      "userEmail": "abaxri@gmail.com",
+      "id": "5MmJnhIar8s"
+    },
+    {
+      "name": "asd",
+      "phone": "312",
+      "time": "asdf",
+      "barberId": "0BAonjE-dLs",
+      "userEmail": "abaxri@gmail.com",
+      "id": "4iw-Jy1Eg2w"
     }
   ],
   "acceptedCustomers": [
@@ -46,11 +70,6 @@
     }
   ],
   "users": [
-    {
-      "email": "bekir@gmail.com",
-      "password": "11111",
-      "id": "60jlsHw4I9s"
-    },
     {
       "email": "abbos@gmail.com",
       "password": "abaxri13",

@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 import Rodal from "rodal"
 
 import "rodal/lib/rodal.css"
@@ -50,17 +51,19 @@ function HomePage() {
   const user = JSON.parse(localStorage.getItem("user") || "null")
 
   if (!user) {
-    alert("Iltimos, avval login qiling ❌")
+    toast.error("iltimos avval login qiling")
     return
   }
 
   if (!name || !phone || !time) {
-    alert("Inputlarni to'ldiring")
+    toast.error("Inputlarni toldir")
     return
   }
 
   try {
-    await axios.post("http://localhost:3000/recepts", {
+    toast.success("Muvaffaqiyatli yuborildi")
+    setTimeout(async() => {
+      await axios.post("http://localhost:3000/recepts", {
       name,
       phone,
       time,
@@ -68,8 +71,9 @@ function HomePage() {
 
       userEmail: user.email,
     })
+    }, 2300);
 
-    alert("Muvaffaqiyatli yuborildi")
+    
 
     setName("")
     setPhone("")
@@ -85,7 +89,7 @@ function HomePage() {
   const addBarber = async () => {
 
     if (!bName || !rating || !age || !experience || !img) {
-      alert("Barcha inputlarni to'ldiring")
+      toast.error("Barcha inputlarni to'ldiring")
       return
     }
 
@@ -98,10 +102,10 @@ function HomePage() {
         experience: Number(experience),
         img,
       }
-
+      toast.success("barber qoshildi")
+      setTimeout(async() => {
       await axios.post("http://localhost:3000/barber", newBarber)
-
-      alert("Barber qo'shildi")
+      }, 2400);
 
       setBName("")
       setRating("")

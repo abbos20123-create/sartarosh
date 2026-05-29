@@ -4,6 +4,7 @@ import {
   FaClipboardList,
   FaCheckCircle,
   FaUserShield,
+  FaRegUser,
 } from "react-icons/fa";
 import { FaScissors } from "react-icons/fa6";
 
@@ -26,7 +27,11 @@ function AdminFace() {
       title: "Accepted Recepts",
       path: "/admin/acceptedrecepts",
       icon: FaCheckCircle,
-    },
+    },{
+      title: "User Control",
+      path: "/admin/usercontrol",
+      icon:FaRegUser ,
+    }
   ];
 
   return (

@@ -30,7 +30,6 @@ function BarberControl() {
     }
   };
 
-  // OPEN ADD
   const openAdd = () => {
     setIsEdit(false);
     setId(null);
@@ -44,7 +43,6 @@ function BarberControl() {
     setVisible(true);
   };
 
-  // OPEN EDIT
   const openEdit = (item: Barberr) => {
     setIsEdit(true);
 
@@ -58,7 +56,6 @@ function BarberControl() {
     setVisible(true);
   };
 
-  // SAVE
   const saveBarber = async () => {
     const newBarber = {
       bName: name,
@@ -88,7 +85,6 @@ function BarberControl() {
     }
   };
 
-  // DELETE
   const deleteBarber = async (id?: number) => {
     try {
       await axios.delete(`http://localhost:3000/barber/${id}`);
@@ -102,7 +98,6 @@ function BarberControl() {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-6xl mx-auto bg-white rounded-3xl shadow-xl p-6">
 
-        {/* TOP */}
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-bold text-gray-800">
             Barber Control
@@ -116,7 +111,6 @@ function BarberControl() {
           </button>
         </div>
 
-        {/* CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
           {barber.map((item) => (
@@ -124,7 +118,6 @@ function BarberControl() {
               key={item.id}
               className="bg-white border border-gray-200 rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 overflow-hidden"
             >
-              {/* IMAGE */}
               <div className="relative">
                 <img
                   src={item.img}
@@ -136,7 +129,6 @@ function BarberControl() {
                 </div>
               </div>
 
-              {/* INFO */}
               <div className="p-5 flex flex-col gap-4">
 
                 <h2 className="text-2xl font-bold text-gray-800">
@@ -157,7 +149,6 @@ function BarberControl() {
                   </div>
                 </div>
 
-                {/* BUTTONS */}
                 <div className="flex gap-3">
                   <button
                     onClick={() => openEdit(item)}
@@ -181,7 +172,6 @@ function BarberControl() {
         </div>
       </div>
 
-      {/* MODAL */}
       <Rodal
         visible={visible}
         onClose={() => setVisible(false)}

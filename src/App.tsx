@@ -8,11 +8,17 @@ import ReceptsCon from './admin/ReceptsCon'
 import AcceptedRecepts from './admin/AcceptedRecepts'
 import Register from './home/Register'
 import Login from './home/Login'
+import { ToastContainer } from 'react-toastify'
+import UserControl from './admin/UserControl'
 
 function App() {
 
   return (
     <>
+    <ToastContainer position='top-center'
+    theme='light'
+    autoClose={2000}
+    />
      <Routes>
       <Route path='/' element={<HomePage/>} />
       <Route path='/recept' element={<Recept/>} />
@@ -23,6 +29,7 @@ function App() {
         <Route path='barbercontrol' element={<BarberControl/>} />
         <Route path='receptcontrol' element={<ReceptsCon/>} />
         <Route path='acceptedrecepts' element={<AcceptedRecepts/>} />
+        <Route path='usercontrol' element={<UserControl/>}/>
       </Route>
      </Routes>
     </>
