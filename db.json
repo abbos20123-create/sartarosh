@@ -19,27 +19,47 @@
   ],
   "recepts": [
     {
-      "name": "vor",
-      "phone": "1244422",
-      "time": "4",
+      "name": "garry",
+      "phone": "120000021",
+      "time": "8:30",
       "barberId": "0BAonjE-dLs",
-      "id": "Npr4DByz4BA"
+      "userEmail": "abaxri@gmail.com",
+      "id": "3yORNZOMIw4"
+    },
+    {
+      "name": "potter",
+      "phone": "76100013",
+      "time": "9:00",
+      "barberId": "0BAonjE-dLs",
+      "userEmail": "abaxri@gmail.com",
+      "id": "jPdW0flsLMc"
     }
   ],
   "acceptedCustomers": [
     {
-      "name": "abbos",
-      "phone": "2992071",
-      "time": "9",
-      "barberId": "wVBrzRbFlYE",
-      "id": "ByuzMaYULIs"
+      "name": "vor",
+      "phone": "1244422",
+      "time": "4",
+      "userEmail": "abaxri@gmail.com",
+      "barberId": "0BAonjE-dLs",
+      "id": "0J_fHkq-vHs"
+    }
+  ],
+  "users": [
+    {
+      "email": "bekir@gmail.com",
+      "password": "11111",
+      "id": "60jlsHw4I9s"
     },
     {
-      "name": "islom",
-      "phone": "2992011",
-      "time": "2",
-      "barberId": "wVBrzRbFlYE",
-      "id": "UEfu3KA0Jxc"
+      "email": "abbos@gmail.com",
+      "password": "abaxri13",
+      "id": "ozoXasGmmUM"
+    },
+    {
+      "email": "abaxri@gmail.com",
+      "password": "1111",
+      "id": "ygcOdkXxZBU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

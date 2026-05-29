@@ -18,30 +18,25 @@ function HomePage() {
 
   const [barber, setBarber] = useState<Barberr[]>([])
 
-  // RODALS
   const [openOrder, setOpenOrder] = useState(false)
   const [openBarber, setOpenBarber] = useState(false)
 
-  // ORDER STATES
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [time, setTime] = useState("")
 
-  // BARBER STATES
   const [bName, setBName] = useState("")
   const [rating, setRating] = useState("")
   const [age, setAge] = useState("")
   const [experience, setExperience] = useState("")
   const [img, setImg] = useState("")
 
-  // SELECTED BARBER
   const [selectedBarberId, setSelectedBarberId] = useState<number | null>(null)
 
   useEffect(() => {
     getBarber()
   }, [])
 
-  // GET BARBERS
   const getBarber = async () => {
     try {
       const { data } = await axios.get("http://localhost:3000/barber")
@@ -51,38 +46,42 @@ function HomePage() {
     }
   }
 
-  // SEND ORDER
   const sendOrder = async () => {
+  const user = JSON.parse(localStorage.getItem("user") || "null")
 
-    if (!name || !phone || !time) {
-      alert("Inputlarni to'ldiring")
-      return
-    }
-
-    try {
-
-      await axios.post("http://localhost:3000/recepts", {
-        name,
-        phone,
-        time,
-        barberId: selectedBarberId,
-      })
-
-      alert("Muvaffaqiyatli yuborildi")
-
-      setName("")
-      setPhone("")
-      setTime("")
-      setSelectedBarberId(null)
-
-      setOpenOrder(false)
-
-    } catch (error) {
-      console.log(error)
-    }
+  if (!user) {
+    alert("Iltimos, avval login qiling ❌")
+    return
   }
 
-  // ADD BARBER
+  if (!name || !phone || !time) {
+    alert("Inputlarni to'ldiring")
+    return
+  }
+
+  try {
+    await axios.post("http://localhost:3000/recepts", {
+      name,
+      phone,
+      time,
+      barberId: selectedBarberId,
+
+      userEmail: user.email,
+    })
+
+    alert("Muvaffaqiyatli yuborildi")
+
+    setName("")
+    setPhone("")
+    setTime("")
+    setSelectedBarberId(null)
+    setOpenOrder(false)
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
   const addBarber = async () => {
 
     if (!bName || !rating || !age || !experience || !img) {
@@ -104,7 +103,6 @@ function HomePage() {
 
       alert("Barber qo'shildi")
 
-      // CLEAR INPUTS
       setBName("")
       setRating("")
       setAge("")
@@ -123,51 +121,66 @@ function HomePage() {
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-600 font-sans antialiased">
 
-      {/* HEADER */}
-      <header className="w-full bg-neutral-900 shadow-xl px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+      <header className="w-full bg-linear-to-r from-neutral-900 via-neutral-800 to-neutral-900 px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-lg rounded-b-2xl">
 
-        <h1 className="text-3xl font-extrabold tracking-wider text-amber-500 uppercase">
-          Barber <span className="text-white font-light">Shop</span>
-        </h1>
+        <div className="flex items-center gap-4">
+          <div className="p-2 rounded-md bg-amber-500/10">
+            <h1 className="text-2xl md:text-3xl font-extrabold tracking-wider text-amber-400 uppercase">
+              Barber
+            </h1>
+          </div>
+          <div className="hidden md:block">
+            <span className="text-white font-light">Shop</span>
+          </div>
+        </div>
 
-        {/* SEARCH */}
-        <div className="flex items-center gap-2 w-full md:w-auto bg-neutral-800 rounded-full px-4 py-2 border border-neutral-700 focus-within:border-amber-500 duration-300">
+        <div className="flex items-center gap-2 w-full md:w-1/3 bg-neutral-800 rounded-full px-4 py-2 border border-neutral-700 focus-within:border-amber-500 duration-300">
+          <button className="text-neutral-400 hover:text-amber-500 duration-200 px-2">
+            🔍
+          </button>
           <input
             type="text"
             placeholder="Search master barber..."
-            className="w-full md:w-72 bg-transparent text-white outline-none placeholder-neutral-500 text-sm"
+            className="w-full bg-transparent text-white outline-none placeholder-neutral-500 text-sm"
           />
-          <button className="text-neutral-400 hover:text-amber-500 duration-300">
-            🔍
-          </button>
         </div>
 
-        {/* BUTTONS */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
 
           <button
             onClick={() => setOpenBarber(true)}
-            className="bg-amber-500 hover:bg-amber-600 duration-300 text-neutral-900 px-5 py-2.5 rounded-full shadow-lg font-bold text-sm tracking-wide"
+            className="hidden md:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 duration-300 text-neutral-900 px-4 py-2.5 rounded-full shadow-lg font-bold text-sm tracking-wide"
           >
-            + New Barber
+            ➕ New Barber
           </button>
 
           <Link to={"/recept"}>
-            <button className="bg-neutral-800 hover:bg-neutral-700 duration-300 text-amber-400 border border-neutral-700 px-5 py-2.5 rounded-full shadow-lg font-medium text-sm">
-              Recepts
+            <button className="hidden md:inline-flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 duration-300 text-amber-400 border border-neutral-700 px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              📋 Recepts
             </button>
           </Link>
 
           <Link to={"/"}>
-            <button className="bg-neutral-500 hover:bg-neutral-700 duration-300 text-white px-5 py-2.5 rounded-full shadow-lg font-medium text-sm">
-              Home
+            <button className="bg-neutral-700 hover:bg-neutral-600 duration-300 text-white px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              🏠 Home
+            </button>
+          </Link>
+
+          <Link to={"/register"}>
+            <button className="hidden sm:inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 duration-300 text-white px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              ✍️ Register
+            </button>
+          </Link>
+
+          <Link to={"/login"}>
+            <button className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 duration-300 text-white px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              🔐 Login
             </button>
           </Link>
 
         </div>
       </header>
 
-      {/* BARBERS GRID */}
       <main className="max-w-7xl mx-auto px-6 md:px-12 py-12">
         <div className="mb-8">
           <h2 className="text-2xl font-bold tracking-tight text-neutral-900">Bizning Ustalar</h2>
@@ -183,7 +196,6 @@ function HomePage() {
               className="bg-white rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 duration-300 flex flex-col group"
             >
 
-              {/* IMAGE */}
               <div className="relative overflow-hidden bg-neutral-100">
                 <img
                   src={item.img}
@@ -245,7 +257,6 @@ function HomePage() {
         </div>
       </main>
 
-      {/* MODAL: ORDER */}
       <Rodal
         visible={openOrder}
         onClose={() => setOpenOrder(false)}
@@ -294,7 +305,6 @@ function HomePage() {
         </div>
       </Rodal>
 
-      {/* MODAL: ADD BARBER */}
       <Rodal
         visible={openBarber}
         onClose={() => setOpenBarber(false)}

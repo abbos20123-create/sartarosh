@@ -7,6 +7,7 @@ type ReceptType = {
   phone: string;
   time: string;
   barberId: string;
+  userEmail:string
 };
 
 function ReceptControl() {
@@ -85,6 +86,10 @@ function ReceptControl() {
 
                 <p className="text-gray-600">
                   ⏰ {item.time}
+                </p>
+
+                <p className="text-gray-600">
+                  📩 {item.userEmail}
                 </p>
 
                 <p className="text-gray-600 break-all">

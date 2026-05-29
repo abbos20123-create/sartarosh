@@ -92,54 +92,68 @@ function Recept() {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-100 to-gray-200">
 
-      {/* HEADER */}
-      <header className="w-full bg-neutral-900 shadow-xl px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+      <header className="w-full bg-linear-to-r from-neutral-900 via-neutral-800 to-neutral-900 px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4 sticky top-0 z-50 backdrop-blur-md bg-opacity-95 shadow-lg rounded-b-2xl">
 
-        <h1 className="text-3xl font-extrabold tracking-wider text-amber-500 uppercase">
-          Barber <span className="text-white font-light">Shop</span>
-        </h1>
+        <div className="flex items-center gap-4">
+          <div className="p-2 rounded-md bg-amber-500/10">
+            <h1 className="text-2xl md:text-3xl font-extrabold tracking-wider text-amber-400 uppercase">
+              Barber
+            </h1>
+          </div>
+          <div className="hidden md:block">
+            <span className="text-white font-light">Shop</span>
+          </div>
+        </div>
 
-        {/* SEARCH */}
-        <div className="flex items-center gap-2 w-full md:w-auto bg-neutral-800 rounded-full px-4 py-2 border border-neutral-700 focus-within:border-amber-500 duration-300">
+        <div className="flex items-center gap-2 w-full md:w-1/3 bg-neutral-800 rounded-full px-4 py-2 border border-neutral-700 focus-within:border-amber-500 duration-300">
+          <button className="text-neutral-400 hover:text-amber-500 duration-200 px-2">
+            🔍
+          </button>
           <input
             type="text"
             placeholder="Search master barber..."
-            className="w-full md:w-72 bg-transparent text-white outline-none placeholder-neutral-500 text-sm"
+            className="w-full bg-transparent text-white outline-none placeholder-neutral-500 text-sm"
           />
-          <button className="text-neutral-400 hover:text-amber-500 duration-300">
-            🔍
-          </button>
         </div>
 
-        {/* BUTTONS */}
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
 
           <button
             onClick={() => setOpenBarber(true)}
-            className="bg-amber-500 hover:bg-amber-600 duration-300 text-neutral-900 px-5 py-2.5 rounded-full shadow-lg font-bold text-sm tracking-wide"
+            className="hidden md:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 duration-300 text-neutral-900 px-4 py-2.5 rounded-full shadow-lg font-bold text-sm tracking-wide"
           >
-            + New Barber
+            ➕ New Barber
           </button>
 
           <Link to={"/recept"}>
-            <button className="bg-neutral-800 hover:bg-neutral-700 duration-300 text-amber-400 border border-neutral-700 px-5 py-2.5 rounded-full shadow-lg font-medium text-sm">
-              Recepts
+            <button className="hidden md:inline-flex items-center gap-2 bg-neutral-800 hover:bg-neutral-700 duration-300 text-amber-400 border border-neutral-700 px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              📋 Recepts
             </button>
           </Link>
 
           <Link to={"/"}>
-            <button className="bg-neutral-500 hover:bg-neutral-700 duration-300 text-white px-5 py-2.5 rounded-full shadow-lg font-medium text-sm">
-              Home
+            <button className="bg-neutral-700 hover:bg-neutral-600 duration-300 text-white px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              🏠 Home
+            </button>
+          </Link>
+
+          <Link to={"/register"}>
+            <button className="hidden sm:inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 duration-300 text-white px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              ✍️ Register
+            </button>
+          </Link>
+
+          <Link to={"/login"}>
+            <button className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-400 duration-300 text-white px-4 py-2.5 rounded-full shadow font-medium text-sm">
+              🔐 Login
             </button>
           </Link>
 
         </div>
       </header>
 
-      {/* CONTENT */}
       <div className="max-w-7xl mx-auto px-10 py-12">
 
-        {/* TOP */}
         <div className="flex items-center justify-between mb-12">
 
           <div>
@@ -154,7 +168,6 @@ function Recept() {
 
           </div>
 
-          {/* STATS */}
           <div className="bg-black text-white rounded-3xl px-10 py-8 shadow-2xl">
 
             <p className="text-gray-400 text-lg">
@@ -169,14 +182,11 @@ function Recept() {
 
         </div>
 
-        {/* RECEPT CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
 
           {recept.map((item) => {
 
-            const barberData = barber.find(
-              (b) => b.id === item.barberId
-            )
+            const barberData = barber.find((b) => b.id === item.barberId)
 
             return (
 

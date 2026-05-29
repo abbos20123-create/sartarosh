@@ -7,6 +7,7 @@ type AcceptedType = {
   phone: string;
   time: string;
   barberId: string;
+  userEmail:string
 };
 
 function AcceptedRecepts() {
@@ -65,6 +66,10 @@ function AcceptedRecepts() {
 
                 <p className="text-gray-600">
                   ⏰ {item.time}
+                </p>
+                
+                <p className="text-gray-600">
+                  ⏰ {item.userEmail}
                 </p>
 
                 <p className="text-gray-600 break-all">
